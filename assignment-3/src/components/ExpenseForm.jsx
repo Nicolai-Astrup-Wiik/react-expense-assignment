@@ -20,23 +20,7 @@ export function ExpenseForm({ addExpense }) {
     }));
   };
 
-  const onFocusAmount = (e) => {
-    if (e.target.value === "0") {
-      setValues((prev) => ({
-        ...prev,
-        amount: "",
-      }));
-    }
-  };
-
-  const onBlurAmount = (e) => {
-    if (e.target.value === "") {
-      setValues((prev) => ({
-        ...prev,
-        amount: 0,
-      }));
-    }
-  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,8 +62,7 @@ export function ExpenseForm({ addExpense }) {
             className={styles.input}
             value={values.amount}
             onChange={onChange}
-            onFocus={onFocusAmount}
-            onBlur={onBlurAmount}
+           
           />
           <div className={styles.error}>
             {errors.amount && <span>{errors.amount}</span>}
