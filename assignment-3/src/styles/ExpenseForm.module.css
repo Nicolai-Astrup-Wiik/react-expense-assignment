@@ -1,0 +1,49 @@
+.formGroup {
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.input {
+	display: block;
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+
+	background-color: beige;
+}
+
+.select {
+	display: block;
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	background-color: beige;
+
+}
+
+.button {
+	padding: 10px 15px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	cursor: pointer;
+
+}
+
+.button:hover {
+	background-color: #0056b3;
+}
+
+.error {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	height: 20px;
+	color: red;
+	font-size: 12px;
+}
