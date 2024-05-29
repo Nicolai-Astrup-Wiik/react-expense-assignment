@@ -5,10 +5,11 @@ import { loadFromLocalStorage, saveToLocalStorage } from "../js/localStorage";
 import styles from "../styles/ExpenseManager.module.css"; 
 import { ExpenseCounter } from "./ExpenseCounter";
 
+
 export function ExpenseManager() {
   const [expenses, setExpenses] = useState([]);
 
-  useEffect(() => {
+  useEffect(function loadExpensesFromLocalstorage() {
     const storedExpenses = loadFromLocalStorage("expenseForm");
     if (storedExpenses) {
       setExpenses(storedExpenses);
