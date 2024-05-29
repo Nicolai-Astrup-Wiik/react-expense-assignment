@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { loadFromLocalStorage } from "../js/localStorage";
+import React from "react";
 
-export function DisplayExpenses() {
-  const [expenses, setExpenses] = useState([]);
-
-  useEffect(() => {
-    const storedExpenses = loadFromLocalStorage("expenseForm");
-    if (storedExpenses) {
-      setExpenses(storedExpenses);
-    }
-  }, []);
-
+export function DisplayExpenses({ expenses, deleteExpense }) {
   return (
     <div>
       <h2>Expenses</h2>
@@ -32,6 +22,7 @@ export function DisplayExpenses() {
               <p>
                 <strong>Category:</strong> {expense.category}
               </p>
+              <button onClick={() => deleteExpense(index)}>Delete</button>
             </li>
           ))}
         </ul>
