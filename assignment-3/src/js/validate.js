@@ -11,11 +11,16 @@ export const validateForm = (values) => {
 
   if (!values.date) {
     errors.date = "Date is required";
+  }else {
+    const today = new Date();
+    const inputDate = new Date(values.date);
+    if (inputDate > today) {
+      errors.date = "Cannot add expenses from future";
+    }
   }
-
   if (values.category === "select") {
     errors.category = "Category is required";
   }
 
   return errors;
-};
+}
