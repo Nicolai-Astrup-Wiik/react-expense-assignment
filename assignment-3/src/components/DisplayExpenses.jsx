@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/DisplayExpenses.module.css"; 
 
 export function DisplayExpenses({ expenses, deleteExpense }) {
   return (
@@ -7,25 +8,35 @@ export function DisplayExpenses({ expenses, deleteExpense }) {
       {expenses.length === 0 ? (
         <p>No expenses recorded.</p>
       ) : (
-        <ul>
-          {expenses.map((expense, index) => (
-            <li key={index}>
-              <p>
-                <strong>Title:</strong> {expense.title}
-              </p>
-              <p>
-                <strong>Amount:</strong> {expense.amount}
-              </p>
-              <p>
-                <strong>Date:</strong> {expense.date}
-              </p>
-              <p>
-                <strong>Category:</strong> {expense.category}
-              </p>
-              <button onClick={() => deleteExpense(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {expenses.map((expense, index) => (
+              <tr key={index}>
+                <td>{expense.title}</td>
+                <td>{expense.amount}</td>
+                <td>{expense.date}</td>
+                <td>{expense.category}</td>
+                <td>
+                  <button
+                    className={styles.button}
+                    onClick={() => deleteExpense(index)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );

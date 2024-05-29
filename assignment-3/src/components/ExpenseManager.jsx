@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ExpenseForm } from "./ExpenseForm";
 import { DisplayExpenses } from "./DisplayExpenses";
 import { loadFromLocalStorage, saveToLocalStorage } from "../js/localStorage";
+import styles from "../styles/ExpenseManager.module.css"; 
+import { ExpenseCounter } from "./ExpenseCounter";
 
 export function ExpenseManager() {
   const [expenses, setExpenses] = useState([]);
@@ -26,9 +28,14 @@ export function ExpenseManager() {
   };
 
   return (
-    <div>
-      <ExpenseForm addExpense={addExpense} />
-      <DisplayExpenses expenses={expenses} deleteExpense={deleteExpense} />
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <ExpenseForm addExpense={addExpense} />
+      </div>
+      <div className={styles.listContainer}>
+      <ExpenseCounter expenses={expenses} />
+        <DisplayExpenses expenses={expenses} deleteExpense={deleteExpense} />
+      </div>
     </div>
   );
 }
