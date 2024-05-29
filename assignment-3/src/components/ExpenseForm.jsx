@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { validateForm } from "../js/validate";
+import { loadFromLocalStorage, saveToLocalStorage } from "../js/localStorage";
+import { DisplayExpenses } from "./DisplayExpenses";
 
 export function ExpenseForm() {
   const [values, setValues] = useState({
@@ -10,6 +12,18 @@ export function ExpenseForm() {
   });
 
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const storedExpenses = loadFromLocalStorage("expenseForm");
+    if (storedExpenses) {
+      setValues({
+        title: "",
+        amount: 0,
+        date: "",
+        category: "select",
+      });
+    }
+  }, []);
 
   const onChange = (e) => {
     const { id, value } = e.target;
@@ -26,6 +40,12 @@ export function ExpenseForm() {
 
     if (Object.keys(validationErrors).length === 0) {
       console.log(values);
+
+      const existingExpenses = loadFromLocalStorage("expenseForm") || [];
+      const updatedExpenses = [...existingExpenses, values];
+
+      saveToLocalStorage("expenseForm", updatedExpenses);
+      DisplayExpenses();
     }
   };
 
