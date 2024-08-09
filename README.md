@@ -1,5 +1,5 @@
 assignment-3 react
-netlify: 
+netlify: https://sprightly-piroshki-73327d.netlify.app/
 github: https://github.com/Nicolai-Astrup-Wiik/react-expense-assignment
 
 
